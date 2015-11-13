@@ -17,21 +17,21 @@ int main(void) {
 	
 	DDRD = 0xFF;				// set Port D pins for output
 	
-	/*
+    /*
 	ADMUX - ADC Multiplexer Selection Register
 	
-	bit			  7			  6			  5			4			3			2			1			0
-	name		REFS1		REFS0		ADLAR		-		  MUX3		  MUX2		  MUX1		  MUX0
-	set to		  0			  1			  1			0			0			1			0			1
+	bit          7           6          5         4        3         2          1          0
+	name       REFS1       REFS0      ADLAR       -       MUX3      MUX2       MUX1       MUX0
+	set to       0           1          1         0        0         1          0          1
 	
-	REFS1 = 0	 use AVCC for reference voltage
+	REFS1 = 0    use AVCC for reference voltage
 	REFS0 = 1
 	
-	ADLAR = 1	 left justify ADC result in ADCH/ADCL
+	ADLAR = 1    left justify ADC result in ADCH/ADCL
 	
 	bit 4 = 0
 	
-	MUX3 = 0	 use PC5/ADC5 (pin 28) for input
+	MUX3 = 0     use PC5/ADC5 (pin 28) for input
 	MUX2 = 1
 	MUX1 = 0
 	MUX0 = 1
@@ -60,17 +60,17 @@ int main(void) {
 	/*
 	ADCSRB - ADC Control and Status Register B
 	
-	bit			7			 6			5			4			3		 2			 1			 0
-	name		-			ACME		-			-			-		ADTS2		ADTS1		ADTS0
-	set to		0			 0			0			0			0		 0			 0			 0
+	bit         7           6           5           4           3         2           1           0
+	name        -          ACME         -           -           -       ADTS2       ADTS1       ADTS0
+	set to      0           0           0           0           0         0           0           0
 	
 	bit 7 = 0
-	ACME = 0	 don't enable analog comparator multiplexer
+	ACME = 0     don't enable analog comparator multiplexer
 	bit 5 = 0
 	bit 4 = 0
 	bit 3 = 0
 	ADTS2 = 0
-	ADTS1 = 0	 register ADCSRA bit ADATE set to 0 so these bits have no effect
+	ADTS1 = 0    register ADCSRA bit ADATE set to 0 so these bits have no effect
 	ADTS0 = 0
 	*/
 	ADCSRB = 0b00000000;
