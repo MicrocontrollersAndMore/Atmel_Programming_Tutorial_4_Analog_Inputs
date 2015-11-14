@@ -1,4 +1,4 @@
-// ADC_WithInterruptFreeRunning.c
+// ADC_WithInterruptSingleConversion.c
 
 // 10k ohm pot on PC5/ADC5 (pin 28)
 // 8 LEDs on Port D pins
@@ -41,11 +41,11 @@ int main(void) {
 	
 	bit          7           6            5          4          3            2           1           0
 	name        ADEN        ADSC        ADATE       ADIF       ADIE        ADPS2       ADPS1       ADPS0
-	set to       1           0            1          0          1            0           1           1
+	set to       1           0            0          0          1            0           1           1
 	
 	ADEN = 1     enable ADC
 	ADSC = 0     don't start ADC yet
-	ADATE = 1    enable ADC auto trigger (i.e. use single conversion mode)
+	ADATE = 0    don't enable ADC auto trigger (i.e. use single conversion mode)
 	ADIF = 0     don't set ADC interrupt flag
 	ADIE = 1     enable ADC interrupt
 	
@@ -53,7 +53,7 @@ int main(void) {
 	ADPS1 = 1    1 MHz clock / 8 = 125 kHz ADC clock
 	ADPS0 = 1
 	*/
-	ADCSRA = 0b10101011;
+	ADCSRA = 0b10001011;
 	
 	/*
 	ADCSRB - ADC Control and Status Register B
@@ -68,7 +68,7 @@ int main(void) {
 	bit 4 = 0
 	bit 3 = 0
 	ADTS2 = 0
-	ADTS1 = 0    free running mode
+	ADTS1 = 0    register ADCSRA bit ADATE set to 0 so these bits have no effect
 	ADTS0 = 0
 	*/
 	ADCSRB = 0b00000000;
@@ -85,6 +85,8 @@ int main(void) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ISR(ADC_vect) {
 	PORTD = ADCH;				// assign contents of ADC high register to Port D pins
+	ADCSRA |= (1 << ADSC);		// start next ADC
 }
+
 
 
