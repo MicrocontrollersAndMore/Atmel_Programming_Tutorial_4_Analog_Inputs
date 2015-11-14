@@ -41,18 +41,18 @@ int main(void) {
 	/*
 	ADCSRA - ADC Control and Status Register A
 	
-	bit			 7			 6			  5			 4			 3			  2			  1			  0
-	name		ADEN		ADSC		ADATE		ADIF		ADIE		ADPS2		ADPS1		ADPS0
-	set to		 1			 0			  0			 0			 0			  0			  1			  1
+	bit          7           6            5          4          3            2           1           0
+	name        ADEN        ADSC        ADATE       ADIF       ADIE        ADPS2       ADPS1       ADPS0
+	set to       1           0            0          0          0            0           1           1
 	
-	ADEN = 1	 enable ADC
-	ADSC = 0	 don't enable ADC yet
-	ADATE = 0	 don't enable ADC auto trigger (i.e. use single conversion mode)
-	ADIF = 0	 don't set ADC interrupt flag
-	ADIE = 0	 don't set ADC interrupt enable
+	ADEN = 1     enable ADC
+	ADSC = 0     don't enable ADC yet
+	ADATE = 0    don't enable ADC auto trigger (i.e. use single conversion mode)
+	ADIF = 0     don't set ADC interrupt flag
+	ADIE = 0     don't set ADC interrupt enable
 	
 	ADPS2 = 0
-	ADPS1 = 1	 1 MHz clock / 8 = 125 kHz ADC clock
+	ADPS1 = 1    1 MHz clock / 8 = 125 kHz ADC clock
 	ADPS0 = 1
 	*/
 	ADCSRA = 0b10000011;
