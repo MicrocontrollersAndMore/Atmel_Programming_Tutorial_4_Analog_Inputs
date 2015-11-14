@@ -9,9 +9,6 @@
 
 #include <avr/io.h>				// this is always included in AVR programs
 
-#define BIT_IS_SET(byte, bit) (byte & (1 << bit))
-#define BIT_IS_CLEAR(byte, bit) (!(byte & (1 << bit)))
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 int main(void) {
 	
