@@ -45,7 +45,7 @@ int main(void) {
 	
 	ADEN = 1     enable ADC
 	ADSC = 0     don't start ADC yet
-	ADATE = 1    enable ADC auto trigger (i.e. use single conversion mode)
+	ADATE = 1    enable ADC auto trigger (i.e. use free running mode)
 	ADIF = 0     don't set ADC interrupt flag
 	ADIE = 1     enable ADC interrupt
 	
@@ -86,5 +86,6 @@ int main(void) {
 ISR(ADC_vect) {
 	PORTD = ADCH;				// assign contents of ADC high register to Port D pins
 }
+
 
 
