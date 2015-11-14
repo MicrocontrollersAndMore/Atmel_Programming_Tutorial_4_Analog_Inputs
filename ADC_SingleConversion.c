@@ -46,7 +46,7 @@ int main(void) {
 	set to       1           0            0          0          0            0           1           1
 	
 	ADEN = 1     enable ADC
-	ADSC = 0     don't enable ADC yet
+	ADSC = 0     don't start ADC yet
 	ADATE = 0    don't enable ADC auto trigger (i.e. use single conversion mode)
 	ADIF = 0     don't set ADC interrupt flag
 	ADIE = 0     don't set ADC interrupt enable
