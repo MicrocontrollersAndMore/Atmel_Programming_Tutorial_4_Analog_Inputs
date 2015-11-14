@@ -9,6 +9,9 @@
 
 #include <avr/io.h>				// this is always included in AVR programs
 
+#define BIT_IS_SET(byte, bit) (byte & (1 << bit))
+#define BIT_IS_CLEAR(byte, bit) (!(byte & (1 << bit)))
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 int main(void) {
 	
@@ -75,11 +78,7 @@ int main(void) {
 	while (1) {									// begin infinite loop
 		ADCSRA |= (1 << ADSC);					// start ADC conversion
 		while(BIT_IS_SET(ADCSRA, ADSC)) {}		// wait here until the chip clears the ADSC bit for us, which means the ADC is complete
-		PORTD = ADCH;
-		
-		// buffer variable necessary ??
-		// delay necessary ??
-		
+		PORTD = ADCH;							// assign contents of ADC high register to Port D pins
 	}
 	return(0);					// should never get here, this is to prevent a compiler warning
 }
